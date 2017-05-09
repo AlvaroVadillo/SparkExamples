@@ -10,7 +10,7 @@ object WordCount {
     val sc = new SparkContext(new SparkConf().setMaster("local[*]").setAppName("Spark Count"))
 
     val threshold = 1
-    val tokenized = sc.textFile("text").flatMap(_.split(" "))
+    val tokenized = sc.textFile("src/resources/text.txt").flatMap(_.split(" "))
     // count the occurrence of each word
     val wordCounts = tokenized.map((_, 1)).reduceByKey(_ + _)
 
